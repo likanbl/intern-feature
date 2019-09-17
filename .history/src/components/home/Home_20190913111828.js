@@ -1,0 +1,52 @@
+import React, {Component} from 'react';
+import {View, FlatList, Text, StyleSheet} from 'react-native';
+import {Card} from 'react-native-elements';
+import {HomeItem} from './HomeItem';
+
+const Data = [
+  {
+    Name: 'Milan Milanovic',
+    role: 'Software Engineer',
+    more: {
+      linkedIn: 'https://www.linkedin.com/feed/',
+      skills: 'JavaScript, React Native',
+      additionalInfo:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    },
+  },
+  {
+    Name: 'Marko Markovic',
+    role: 'Software Engineer',
+    more: {
+      linkedIn: 'https://www.linkedin.com/feed/',
+      skills: 'Python, Machine Learning',
+      additionalInfo:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    },
+  },
+];
+export default class Home extends Component {
+  renderItem = ({item}) => <HomeItem item={item} />;
+
+  render() {
+    return (
+      <Card>
+        <View style={StyleSheet.container}>
+          <FlatList
+            data={Data}
+            renderItem={this.renderItem}
+            keyExtractor={Data.id}
+          />
+        </View>
+      </Card>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingTop: 50,
+  },
+});
